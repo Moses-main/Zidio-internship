@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Register - Location Tracker</title>
+    <title>Login - Location Tracker</title>
     <!-- Bootstrap CSS -->
     <link
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
@@ -21,20 +21,10 @@
         <div class="col-md-6">
           <div class="card">
             <div class="card-header bg-primary text-white">
-              <h5><i class="fas fa-user-plus"></i> Register</h5>
+              <h5><i class="fas fa-sign-in-alt"></i> Login</h5>
             </div>
             <div class="card-body">
-              <form method="post" action="/register">
-                <div class="form-group">
-                  <label for="name">Name</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="name"
-                    name="name"
-                    required
-                  />
-                </div>
+              <form method="POST" action="/login">
                 <div class="form-group">
                   <label for="email">Email</label>
                   <input
@@ -56,11 +46,8 @@
                   />
                 </div>
                 <button type="submit" class="btn btn-primary">
-                  <i class="fas fa-user-plus"></i> Register
+                  <i class="fas fa-sign-in-alt"></i> Login
                 </button>
-                <p>
-                  Have an account <a href="/login" class="nav-link">Sign</a>
-                </p>
               </form>
             </div>
           </div>

@@ -1,11 +1,19 @@
 // models/Location.js
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
 const locationSchema = new mongoose.Schema({
-  userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+  userId: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
   latitude: Number,
   longitude: Number,
+  city: {
+    type: String,
+    required: true,
+  },
+  country: {
+    type: String,
+    required: true,
+  },
   timestamp: { type: Date, default: Date.now },
 });
 
-module.exports = mongoose.model('Location', locationSchema);
+module.exports = mongoose.model("Location", locationSchema);

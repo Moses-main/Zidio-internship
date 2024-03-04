@@ -1,14 +1,9 @@
-// app.js
-const express = require("express");
-const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
-const loginController = require("./controllers/loginController");
-const landingController = require("./controllers/landingController");
-const registerController = require("./controllers/registerLogic");
-const userRoutes = require("./routes/userRoutes");
-const loginLogic = require("./controllers/loginLogic");
-const registerLogic = require("./controllers/registerLogic");
-// Import other route modules as needed
+import express from "express";
+import mongoose from "mongoose";
+import bodyParser from "body-parser";
+import { login } from "./controllers/loginController.js";
+import { landing } from "./controllers/landingController.js";
+import { trackLocation } from "./controllers/locationController.js";
 
 const app = express();
 
@@ -17,7 +12,7 @@ app.use(bodyParser.json());
 app.use(express.static("public"));
 
 // MongoDB Connection
-MONGO_URL = process.env.MONGO_URL;
+const MONGO_URL = process.env.MONGO_URL;
 mongoose.connect("mongodb://localhost:27017/trackerDB", {
   // useNewUrlParser: true,
   // useUnifiedTopology: true,
@@ -30,14 +25,9 @@ if (db) console.log("Database connection succesful");
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
 // Routes;
-app.get("/", landingController);
-app.get("/login", loginController);
-app.get("/register", registerController);
-// app.use(userRoutes);
-
-// Logic for the forms
-// app.post("/register", registerLogic);
-// app.post("/login", loginLogic);
+app.get("/", landing);
+app.get("/login", login);
+app.get("/location", trackLocation);
 
 // Start server
 const PORT = process.env.PORT || 3500;

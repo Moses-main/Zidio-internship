@@ -1,10 +1,27 @@
-// models/User.js
-const mongoose = require('mongoose');
+// user.js (or userModel.js)
+import locationSchema from "./models/Location";
+const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
-  username: { type: String, unique: true },
-  password: String,
-  // Add other user-related fields as needed
+  name: {
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  password: {
+    type: String,
+    required: true,
+  },
+  locationHistory: {
+    type: [locationSchema],
+    default: [],
+  },
 });
 
-module.exports = mongoose.model('User', userSchema);
+const User = mongoose.model("User", userSchema);
+
+module.exports = User;

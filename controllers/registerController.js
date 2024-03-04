@@ -1,3 +1,3 @@
-module.exports = (req, res) => {
+export const register = (req, res) => {
   res.render("register");
 };

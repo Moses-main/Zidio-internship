@@ -9,6 +9,7 @@ const crypto = require("crypto");
 const jwtSecret = crypto.randomBytes(64).toString("hex");
 console.log(jwtSecret);
 
+
 exports.loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;

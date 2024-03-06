@@ -18,7 +18,6 @@ mongoose.connect("mongodb://localhost:27017/trackerDB", {
   // useUnifiedTopology: true,
 });
 const db = mongoose.connection;
-// app.engine("ejs");
 app.set("view engine", "ejs");
 
 if (db) console.log("Database connection succesful");

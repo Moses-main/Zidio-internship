@@ -4,7 +4,10 @@ import bodyParser from "body-parser";
 import { login } from "./controllers/loginController.js";
 import { landing } from "./controllers/landingController.js";
 import { trackLocation } from "./controllers/locationController.js";
+import { fileURLToPath } from "url";
+import { dirname } from "path";
 
+const __dirname = dirname(fileURLToPath(import.meta.url));
 const app = express();
 
 // Middleware
@@ -19,7 +22,10 @@ mongoose.connect("mongodb://localhost:27017/trackerDB", {
 });
 const db = mongoose.connection;
 app.set("view engine", "ejs");
+app.set("views", __dirname + "/views");
 
+// Define partials object
+const partials = { header: "headers", footer: "footer" };
 if (db) console.log("Database connection succesful");
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
